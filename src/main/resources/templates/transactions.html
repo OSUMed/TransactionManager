@@ -22,13 +22,13 @@
 			<th>Funds In</th>
 			<th>Funds Out</th>
 		</tr>
-			<tr th:each="transaction : ${transactions}" th:object="${transaction}">
-				<td th:text="*{id}"></td>
-				<td th:text="*{date}"></td>
-				<td th:text="*{retailer}"></td>
-				<td></td>
-				<td></td>
-			</tr>
+		<tr th:each="transaction : ${transactions}" th:object="${transaction}">
+			<td th:text="*{id}"></td>
+			<td th:text="*{date}"></td>
+			<td th:text="*{retailer}"></td>
+			<td th:text="*{type == 'C' ? amount : ''}"></td>
+			<td th:text="*{type == 'D' ? amount : ''}"></td>
+		</tr>
 		<!-- These 4 rows below are for demonstration purposes only
 			     You will need to edit the code below in order to make
 			     it dynamically list ALL 100 transactions from the Repo -->
