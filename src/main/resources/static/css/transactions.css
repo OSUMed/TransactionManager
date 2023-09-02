@@ -11,3 +11,8 @@ table th {
   color: white;
   background-color: black;
 }
+
+p, a {
+    font-size: 23px;
+    margin: 4;
+}

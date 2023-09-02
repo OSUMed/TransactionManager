@@ -18,19 +18,29 @@ public class TransactionController {
 	@Autowired
 	TransactionService transactionService;
 	
-
-	
+	// Handler method to retrieve and display all transactions
 	@GetMapping("/transactions")
 	public String getAllTransactions(ModelMap model) {
+		// Retrieve all transactions from the service
 		List<Transaction> transactions = transactionService.findAll();
+		
+		// Add the transactions to the model for view rendering
 		model.put("transactions", transactions);
+		
+		// Return the view name for transactions
 		return "transactions";
 	}
 	
+	// Handler method to retrieve and display a specific transaction by ID
 	@GetMapping("/transactions/{transaction_id}")
 	public String getTransactionId(@PathVariable Long transaction_id, ModelMap model) {
+		// Retrieve the transaction by ID from the service
 		Transaction transaction = transactionService.getById(transaction_id);
+		
+		// Add the transaction to the model for view rendering
 		model.put("transaction", transaction);
+		
+		// Return the view name for a single transaction
 		return "transaction";
 	}
 }

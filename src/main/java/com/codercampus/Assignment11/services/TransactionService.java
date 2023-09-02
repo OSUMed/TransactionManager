@@ -15,23 +15,40 @@ public class TransactionService {
 	@Autowired
 	TransactionRepository transactionRepo;
 	
-	public List<Transaction> findAll(){
-		List<Transaction> allTransactions = transactionRepo.findAll();
-		List<Transaction> sortedTransactions = allTransactions.stream()
-				
-				// Sorts ASC on default:
-			    .sorted(Comparator.comparing(Transaction::getDate))
-			    .collect(Collectors.toList());
+	/**
+	 * Retrieves all transactions from the repository and returns them in ascending order based on their date.
+	 *
+	 * @return A list of transactions sorted in ascending order by date.
+	 */
+	public List<Transaction> findAll() {
+	    // Retrieve all transactions from the repository
+	    List<Transaction> allTransactions = transactionRepo.findAll();
 
-		return sortedTransactions;
+	    // Sort transactions in ascending order based on their date using Java Streams
+	    List<Transaction> sortedTransactions = allTransactions.stream()
+	            .sorted(Comparator.comparing(Transaction::getDate))
+	            .collect(Collectors.toList());
+
+	    // Return the sorted list of transactions
+	    return sortedTransactions;
 	}
 
+	
+	/**
+	 * Retrieves a transaction by its ID from the list of all transactions.
+	 *
+	 * @param transaction_id The ID of the transaction to retrieve.
+	 * @return The transaction with the specified ID, or null if not found.
+	 */
 	public Transaction getById(Long transaction_id) {
 		List<Transaction> allTransactions = transactionRepo.findAll();
-		List<Transaction> transaction_id_matches = allTransactions
+		
+		// Find Id that matches parameter, then return that singular value:
+		List<Transaction> transactionMatches = allTransactions
 			.stream()
 			.filter(transaction -> transaction.getId().equals(transaction_id))
 			.collect(Collectors.toList());
-		return transaction_id_matches.get(0);
+		
+		return !transactionMatches.isEmpty() ? transactionMatches.get(0) : null;
 	}
 }
