@@ -1,35 +1,23 @@
 <html xmlns:th="http://thymeleaf.org">
-
-<head>
-	<title>Online Bank</title>
-	<link rel="stylesheet" href="/css/transactions.css" />
-</head>
-
-<body>
-	<h2>Transaction History</h2>
-
-	<table>
-		<tr>
-			<th>ID</th>
-			<th>Date</th>
-			<th>Retailer</th>
-			<th>Funds In</th>
-			<th>Funds Out</th>
-		</tr>
-		<div th:each="transaction : ${transactions)">
-			<tr th:object="${transaction}">
-				<td><a href="/transactions/1">{id}</a></td>
-				<td>{date}</td>
-				<td>{retailer}</td>
-				<td></td>
-				<td></td>
+	<head>
+		<title>Online Bank</title>
+		<link rel="stylesheet" href="/css/transactions.css"/>
+	</head>
+	<body>
+		<h2>Transaction History</h2>
+		
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Date</th>
+				<th>Retailer</th>
+				<th>Funds In</th>
+				<th>Funds Out</th>
 			</tr>
-		</div>
-		<!-- These 4 rows below are for demonstration purposes only
+			<!-- These 4 rows below are for demonstration purposes only
 			     You will need to edit the code below in order to make
 			     it dynamically list ALL 100 transactions from the Repo -->
-
-		<!-- 	<tr>
+			<tr>
 				<td><a href="/transactions/50">50</a></td>
 				<td>2020-01-01T19:04:48</td>
 				<td>H-E-B Grocery</td>
@@ -56,9 +44,8 @@
 				<td>Aldi</td>
 				<td>38.50</td>
 				<td></td>
-			</tr> -->
-
-	</table>
-</body>
-
+			</tr>
+			
+		</table>
+	</body>
 </html>
