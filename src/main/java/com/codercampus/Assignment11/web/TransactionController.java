@@ -1,5 +1,6 @@
 package com.codercampus.Assignment11.web;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,19 @@ public class TransactionController {
 	
 	@GetMapping("/transactions")
 	public String getAllTransactions(ModelMap model) {
-		List<Transaction> allTransactions = transactionService.findAll();
-		System.out.println("In controller: " + allTransactions);
-		model.put("transactions", allTransactions);
+		List<Transaction> transactions = transactionService.findAll();
+		System.out.println("In controller: " + transactions);
+		model.put("transactions", transactions);
+		String test= "Hi Srikanth";
+        List<String> todos = Arrays.asList(
+                "Buy groceries",
+                "Call mom",
+                "Do laundry",
+                "Pay bills",
+                "Go for a run"
+        );
+		model.put("test", test);
+		model.addAttribute("todos", todos);
 		return "transactions";
 	}
 	
