@@ -16,7 +16,7 @@
 			<th>Funds Out</th>
 		</tr>
 		<tr th:each="transaction : ${transactions}" th:object="${transaction}">
-			<td th:text="*{id}"></td>
+			<td><a th:href="@{/transactions/{id}(id = *{id})}" th:text="*{id}">50</a></td>
 			<td th:text="*{date}"></td>
 			<td th:text="*{retailer}"></td>
 			<td th:text="*{type == 'C' ? amount : ''}"></td>
