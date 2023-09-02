@@ -15,7 +15,6 @@ public class TransactionService {
 	
 	public List<Transaction> findAll(){
 		List<Transaction> allTransactions = transactionRepo.findAll();
-		System.out.println("In service: " +allTransactions);
 		return allTransactions;
 	}
 }
