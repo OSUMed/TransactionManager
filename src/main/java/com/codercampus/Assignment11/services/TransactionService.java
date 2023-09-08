@@ -44,11 +44,9 @@ public class TransactionService {
 		List<Transaction> allTransactions = transactionRepo.findAll();
 		
 		// Find Id that matches parameter, then return that singular value:
-		List<Transaction> transactionMatches = allTransactions
+		return allTransactions
 			.stream()
 			.filter(transaction -> transaction.getId().equals(transaction_id))
-			.collect(Collectors.toList());
-		
-		return !transactionMatches.isEmpty() ? transactionMatches.get(0) : null;
+			.findFirst().orElse(null);		
 	}
 }
