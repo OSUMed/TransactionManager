@@ -1,18 +1,23 @@
 <html xmlns:th="http://thymeleaf.org">
-	<head>
-		<title>Online Bank</title>
-		<link rel="stylesheet" href="/css/transactions.css"/>
-	</head>
-	<body>
-	
+
+<head>
+	<title>Online Bank</title>
+	<link rel="stylesheet" href="/css/transactions.css" />
+</head>
+
+<body>
+	<div th:if="${transaction != null}">
 		<div th:object="${transaction}">
 			<h1 th:text="*{type == 'C' ? 'Transaction ID: ' + id + ' (Credit)' : 'Transaction ID: ' + id + ' (Debit)'}"></h1>
-			
 			<p>Date: [[*{date}]]</p>
 			<p th:text="*{type == 'C' ? 'Amount: -' + amount : 'Amount: ' + amount}"></p>
 			<p>Description: [[*{retailer}]]</p>
 			<a th:href="@{/transactions}">back</a>
 		</div>
-		
-	</body>
+	</div>
+	<div th:unless="${transaction != null}">
+		<h2>Transaction not found.</h2>
+	</div>
+</body>
+
 </html>
