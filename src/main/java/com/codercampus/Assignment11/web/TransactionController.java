@@ -15,8 +15,12 @@ import com.codercampus.Assignment11.services.TransactionService;
 @Controller
 public class TransactionController {
 	
-	@Autowired
 	TransactionService transactionService;
+	
+	// Constructor injection for TransactionService
+    public TransactionController(TransactionService transactionService) {
+        this.transactionService = transactionService;
+    }
 	
 	// Handler method to retrieve and display all transactions
 	@GetMapping("/transactions")
